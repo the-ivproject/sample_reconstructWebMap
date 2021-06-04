@@ -14,7 +14,31 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/nav.css">
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
+        integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
+        crossorigin=""></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 </head>
+
+<style>
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -999;
+    }
+</style>
 
 <body>
     <!-- Navbar -->
@@ -33,41 +57,16 @@
                     <img src="assets/target.png" height="35" alt="" loading="lazy" />
                 </a>
                 <h5 class="map-title">REAL ESTATE<span> Map</span></h5>
-                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                </ul> -->
             </div>
-            <!-- Collapsible wrapper -->
-
             <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <!-- Icon -->
-                <!-- <a class="text-reset me-3" href="#">
-                    <i class="fas fa-search-plus"></i>
-                </a>
-                <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-search-minus"></i>
-                </a> -->
-                <!-- Avatar -->
-
                 <a class="btn btn-primary me-3">
-                    <i class="fas fa-envelope"></i> Email Us
+                    <i class="fas fa-envelope" style="font-size: 12px;"></i> Email Us
                 </a>
-                <a class="btn btn-dark px-3  me-3" href="" role="button"><i
-                        class="fab fa-skype"></i></a>
+                <a class="btn btn-dark px-3  me-3" href="" role="button"><i class="fab fa-skype"></i></a>
+
                 <div class="vl"></div>
+
                 <a class="dropdown-toggle d-flex align-items-center hidden-arrow me-3" href="#"
                     id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="25" alt=""
@@ -75,18 +74,76 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <h5 class="dropdown-item" href="#">About Us</h5>
-                    <p class="dropdown-item" href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    <p class="dropdown-item" href="#">Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                     <a class="btn" style="padding:8px;">
                         More about us!
                     </a>
                 </div>
             </div>
-
         </div>
+    </nav>
+
+    <!-- Navbar -->
+    <nav id="map-feature" class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <a onclick="ZoomIn()"><i class="fas fa-search-plus"></i></a>
+                <a onclick="ZoomOut()"><i class="fas fa-search-minus"></i></a>
+                <a><i class="fas fa-expand-arrows-alt"></i></a>
+                <div class="vl" style="height: 25px;width: 0px;"></div>
+                <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option value="Topographic">Topographic</option>
+                        <option value="Streets">Streets</option>
+                        <option value="NationalGeographic">National Geographic</option>
+                        <option value="Oceans">Oceans</option>
+                        <option value="Gray">Gray</option>
+                        <option value="DarkGray">Dark Gray</option>
+                        <option value="Imagery">Imagery</option>
+                        <option value="ImageryClarity">Imagery (Clarity)</option>
+                        <option value="ImageryFirefly">Imagery (Firefly)</option>
+                        <option value="ShadedRelief">Shaded Relief</option>
+                        <option value="Physical">Physical</option>
+                    </select>
+                </div>
+                <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Fly to......</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </nav>
     <!-- Navbar -->
+
+    <div id="map"></div>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"></script>
+    <script src="js/basemap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        function init() {
+            Tabletop.init({
+                key: 'https://docs.google.com/spreadsheets/d/19n8BRKXAo5N_L9QMvy5691SMhl_hxZo_ayczWrNf21o/edit?usp=sharing',
+                callback: myFunction,
+                simpleSheet: true
+            })
+        }
+
+        window.addEventListener('DOMContentLoaded', init)
+
+        function myFunction(data, tabletop) {
+            console.log(data);
+        }
+    </script>
 </body>
 
 </html>
