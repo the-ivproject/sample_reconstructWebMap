@@ -13,34 +13,34 @@ $.when(file).done(function () {
 
     let layer = file.responseJSON
 
-    function highlightFeature(e) {
-        var layer = e.target;
+    // function highlightFeature(e) {
+    //     var layer = e.target;
 
-        layer.setStyle({
-            weight: 5,
-            color: '#ee4266',
-            dashArray: '',
-            fillOpacity: 0
-        });
+    //     layer.setStyle({
+    //         weight: 5,
+    //         color: '#ee4266',
+    //         dashArray: '',
+    //         fillOpacity: 0
+    //     });
 
-        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-            layer.bringToFront();
-        }
-    }
+    //     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    //         layer.bringToFront();
+    //     }
+    // }
 
-    function resetHighlight(e) {
-        geojson.resetStyle(e.target);
-    }
+    // function resetHighlight(e) {
+    //     geojson.resetStyle(e.target);
+    // }
 
     var lastClickedLayer = null
 
     function OnClickFeature(e) {
         if (lastClickedLayer !== null) {
             lastClickedLayer.setStyle({
-                fillColor: '#ffd23f',
+                fillColor: '#37991e',
                 fillOpacity: 0.2,
                 weight: 2,
-                color: '#540d6e',
+                color: '#f5b400',
                 opacity: 1
             });
         }
@@ -51,7 +51,7 @@ $.when(file).done(function () {
 
         layer.setStyle({
             weight: 5,
-            color: 'blue',
+            color: '#f72585',
             dashArray: '',
             fillOpacity: 0
         });
@@ -60,6 +60,7 @@ $.when(file).done(function () {
         document.getElementById('parceldate').value = layer.feature.properties.PARCELDATE
         document.getElementById('parcelowner').value = layer.feature.properties.OWNERNME2
         document.getElementById('parceladdress').value = layer.feature.properties.SITEADRESS
+        document.getElementById('deedacres').value = layer.feature.properties.DEEDACRES
 
     }
 
@@ -75,10 +76,10 @@ $.when(file).done(function () {
         onEachFeature: onEachFeature,
         style: function (feature) {
             return {
-                fillColor: '#ffd23f',
+                fillColor: '#37991e',
                 fillOpacity: 0.2,
                 weight: 2,
-                color: '#540d6e',
+                color: '#f5b400',
                 opacity: 1
             }
         }

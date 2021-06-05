@@ -147,7 +147,21 @@ h6 {
   border-radius: 4px;
   margin: 15px;
   border-left: 4px solid #3a0ca3;
-  padding:20px
+  padding: 20px;
+
+}
+
+#map-button {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  /* width: 295px; */
+  background-color: white !important;
+  border: 1px solid #00000024;
+  border-radius: 4px;
+  margin: 15px;
+  border-left: 4px solid #3a0ca3;
+  padding: 20px
 }
 
 #map-feature i {
@@ -200,9 +214,45 @@ label {
   color: #d00000;
   font-style: italic;
 }
+
+#show-parcel, #hide-parcel {
+  margin: 14px;
+  background-color: black;
+}
+
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;
     padding-left: .8rem;
+  }
+
+  #logo {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.8rem;
+    padding-left: .8rem;
+  }
+
+  #map-feature {
+    bottom: 20px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0px;
+    border-right: 4px solid #3a0ca3;
+  }
+
+  #map-properties {
+    display: none;
+    top: 95px;
+    height: 221px;
+    overflow: auto;
+  }
+  
+  #logo {
+    display: block;
   }
 }

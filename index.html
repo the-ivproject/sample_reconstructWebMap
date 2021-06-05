@@ -46,11 +46,6 @@
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
@@ -58,6 +53,7 @@
                 </a>
                 <h5 class="map-title">PARCEL OF WASHINGTON<span> Village of Jackson</span></h5>
             </div>
+            <img id="logo" src="assets/target.png" height="35" alt="" loading="lazy" />
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <a class="btn btn-primary me-3">
@@ -121,7 +117,7 @@
         </div>
     </nav>
     <!-- Navbar -->
-    <nav id="map-properties" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="map-properties" class="navbar navbar-expand-lg navbar-light bg-light">
         <form>
             <div class="form-row">
                 <h6>Parcel Information</h6>
@@ -139,12 +135,17 @@
                     <input type="text" class="form-control" id="parcelowner" placeholder="No data....">
                     <label for="validationDefault02">Site Address</label>
                     <input type="text" class="form-control" id="parceladdress" placeholder="No data....">
+                    <label for="validationDefault02">Deed Acres</label>
+                    <input type="text" class="form-control" id="deedacres" placeholder="No data....">
                 </div>
             </div>
         </form>
-       
-    </nav>
-    <!-- Navbar -->
+    </div>
+
+    <button id="show-parcel" onclick="ParcelInfo()" class="btn btn-primary me-3"></i><i class="fas fa-table"
+            style="font-size: 12px;"></i> Parcel Information </button>
+    <button id="hide-parcel" onclick="HideParcelInfo()" class="btn btn-primary me-3" style="display: none;"></i><i
+            class="fas fa-arrow-up" style="font-size: 12px;"></i> Hide </button>
 
     <div id="map"></div>
 
@@ -153,6 +154,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="js/geo.js"></script>
+
+    <script>
+        function ParcelInfo() {
+            let prop = document.getElementById('map-properties')
+            prop.style.display = 'block';
+
+            document.getElementById('show-parcel').style.display = 'none'
+            document.getElementById('hide-parcel').style.display = 'block'
+        }
+
+        function HideParcelInfo() {
+            let prop = document.getElementById('map-properties')
+            prop.style.display = 'none';
+
+            document.getElementById('show-parcel').style.display = 'block'
+            document.getElementById('hide-parcel').style.display = 'none'
+        }
+    </script>
 </body>
 
 </html>
