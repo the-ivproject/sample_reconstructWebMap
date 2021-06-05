@@ -15,6 +15,10 @@ i {
   font-size: 14px;
 }
 
+h6 {
+  margin: 0;
+}
+
 .btn {
   font-size: 12px !important;
 }
@@ -24,6 +28,13 @@ i {
   height: 40px;
   width: 20px;
   margin: 0px 6px;
+}
+
+.hl {
+  border-bottom: 1.5px solid #0000002e;
+  /* height: 40px; */
+  width: 100%;
+  /* margin: 0px 6px; */
 }
 
 .col-auto .my-1 {
@@ -91,7 +102,7 @@ i {
 
 /*----------multi-level-accordian-menu------------*/
 .bg-light {
-  background-color: #ffffffb8 !important;
+  background-color: white !important;
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
@@ -123,7 +134,20 @@ i {
   border: 1px solid #00000024;
   border-radius: 4px;
   margin: 15px;
-  border-left: 4px solid rgb(0, 0, 0);
+  border-left: 4px solid #3a0ca3;
+}
+
+#map-properties {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  /* width: 295px; */
+  background-color: white !important;
+  border: 1px solid #00000024;
+  border-radius: 4px;
+  margin: 15px;
+  border-left: 4px solid #3a0ca3;
+  padding:20px
 }
 
 #map-feature i {
@@ -144,6 +168,38 @@ i {
   position: block;
 }
 
+input[type=text] {
+  font-size: 12px;
+  width: 215px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.mb-3 {
+  margin-bottom: 0 !important;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.legend-small {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.legend-disclaimer {
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: #d00000;
+  font-style: italic;
+}
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;

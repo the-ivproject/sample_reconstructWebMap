@@ -1,5 +1,5 @@
-const map = L.map('map', null, { zoomControl:true }).setView([39.78, -104.790], 11);
-let layer = L.esri.basemapLayer('Gray').addTo(map);
+const map = L.map('map', null, { zoomControl:true }).setView([43.329, -88.161], 16);
+let layer = L.esri.basemapLayer('Topographic').addTo(map);
 let layerLabels;
 
 function setBasemap(basemap) {
@@ -36,6 +36,7 @@ basemaps.addEventListener('change', function () {
     setBasemap(basemaps.value);
 });
 
+    
 function ZoomIn() {
     map.zoomIn();
 }
@@ -44,4 +45,7 @@ function ZoomOut() {
     map.zoomOut();
 }
 
+function FitBound() {
+    map.setView([43.329, -88.161], 16)
+}
 
