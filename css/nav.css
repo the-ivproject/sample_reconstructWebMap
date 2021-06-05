@@ -225,8 +225,10 @@ label {
     padding-right: 0.8rem;
     padding-left: .8rem;
   }
-
   #logo {
+    display: none;
+  }
+  #show-parcel {
     display: none;
   }
 }
